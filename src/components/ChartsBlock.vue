@@ -26,6 +26,11 @@ ChartJS.register(
 )
 
 export default {
+props:{
+  prefData:[],
+  prefLabel:[]
+},
+
   name: 'ChartsBlock',
   components: {
     LineChart
@@ -33,19 +38,14 @@ export default {
   data() {
     return {
       data: {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: this.preflabel,
   datasets: [
-    {
-      label: 'Data One',
-      backgroundColor: '#f87979',
-      data: [40, 39, 10, 40, 39, 80, 40]
-    }
+    this.prefData
   ]
 },
 
  options: {
-  responsive: false,
-  maintainAspectRatio: false
+  responsive: true
 }
 
     }

@@ -5,8 +5,8 @@
     </div>
     <div id="CheckboxArea">
       <div id="CheckBoxAndLabelArea" v-for="(item, key) in prefectures" :key="key">
-        <label for="Checkbox">{{item.prefName}}</label>
-        <input type="Checkbox" id="Checkbox" v-model="checkedList" @change="onCheck">
+        <label for="checkbox">{{item.prefName}}</label>
+        <input :value="item.prefCode" type="checkbox" class="Checkbox" v-model="checkedList" @change="onCheck($event,item.prefName,)">
       </div>
     </div>
   </div>
@@ -33,8 +33,13 @@ export default {
   },
 
   methods:{
-    onCheck(){
-      this.$emit("checkBoxChenged", this.checkedList)
+    onCheck(event,name){
+      const data = {
+        code:event.target.value,
+        checkd:event.target.checkd,
+        name:name
+      }
+      this.$emit("checkBoxChenged", data)
     }
 
   }
@@ -103,7 +108,7 @@ h2{
     width: fit-content;
   }
 
-  #Checkbox{
+  .Checkbox{
     accent-color: #526D82;
   }
 
