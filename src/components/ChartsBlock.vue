@@ -1,5 +1,7 @@
 <template>
-  <LineChart :data="data" :options="options"  :key="prefData.datasets.length"/>
+  <div id="ChartsContainer">
+    <LineChart :data="data" :options="options"  :key="prefData.datasets.length"/>
+  </div>
 </template>
 
 <script lang="ts">
@@ -53,3 +55,9 @@ mounted() {
 
 }
 </script>
+
+<style>
+  #ChartsContainer{
+    margin: 30px;
+  }
+</style>
