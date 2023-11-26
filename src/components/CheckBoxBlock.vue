@@ -111,4 +111,8 @@ h2{
     accent-color: #526D82;
   }
 
+  @media screen and (min-width: 481px){
+    
+  }
+
 </style>
