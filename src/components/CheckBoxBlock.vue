@@ -15,8 +15,7 @@
 </template>
 
 <script>
-import axios from "axios";
-import { watch } from 'vue';
+
 
 export default {
   //必要なデータを取得コンポーネント使用時引数として使用可
@@ -36,7 +35,7 @@ export default {
     onCheck(event,name){
       const data = {
         code:event.target.value,
-        checkd:event.target.checkd,
+        checked:event.target.checked,
         name:name
       }
       this.$emit("checkBoxChenged", data)

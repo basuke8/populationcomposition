@@ -2,7 +2,6 @@
 import CheckBoxBlock from "./components/CheckBoxBlock.vue";
 import ChartsBlock from "./components/ChartsBlock.vue";
 import axios from "axios";
-import { Colors } from 'chart.js';
 
 export default {
   name: "App",
@@ -13,13 +12,15 @@ export default {
 
   data(){
     return{
+      graphData:{
+        labels:["label1","label2"],
+        datasets:[]
+      },
       prefecturesData:[],
-      populationTransfer:[],
-      prefLabel:[]
     }
   },
   mounted() {
-    //都道府県一蘭取得
+    //都道府県一覧取得
     var prefectures_url =
       "https://opendata.resas-portal.go.jp/api/v1/prefectures";
 
@@ -32,7 +33,7 @@ export default {
       })
       .then((response) => {
         this.prefecturesData = response.data.result;
-        console.log(response.data.result);
+        // console.log(response.data.result);
       });
   },
 
@@ -51,31 +52,27 @@ export default {
           },
         })
         .then((response) => {
-          this.prefLabel = response.data.result.data[0].data.map(v => v.year)
+　　　　　　
+          const randumDigit =　'#' + Math.floor(Math.random() * 1000)
 
           const prefData = {
             label: prefname,
-            backgroundColor: "#27374D",
+            backgroundColor: randumDigit,
             data:response.data.result.data[0].data.map(v => v.value)
           }
-          this.populationTransfer.push(prefData)
-          alert(this.populationTransfer.map((value) => value.label));
 
-          // this.prefectures = response.data.result
+          this.graphData.labels = response.data.result.data[0].data.map(v => v.year),
+          this.graphData.datasets.push(prefData)
         });
     },
 
       //チェックボックがチェックされた時に走る処理
         checkBoxChenged(checkdata){
-            // alert(checkdata)
-            //データがあるかどうか判定Todo
-            this.populationTransfer.forEach((value) => {
-              if(value.label == checkdata.name){
-                  return
-              }
-            })
-            
+          if(checkdata.checked){
             this.getPopration(checkdata.code,checkdata.name)
+          }else{
+            this.graphData.datasets = this.graphData.datasets.filter((item) => item.label !== checkdata.name)
+          } 
         }
 
   }
@@ -87,7 +84,8 @@ export default {
   <div id="TitleArea">
     <h1 id="Title">都道府県別人口推移</h1>
     <CheckBoxBlock  @checkBoxChenged = "checkBoxChenged"  :prefectures="prefecturesData"/>
-    <ChartsBlock :prefData="prefData" :preflabel="prefLabel"/>
+    <!-- <ChartsBlock :prefData="populationTransfer" :prefLabel="prefLabel"/> -->
+    <ChartsBlock :prefData="graphData"/>
   </div>
 </template>
 

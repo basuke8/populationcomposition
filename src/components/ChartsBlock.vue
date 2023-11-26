@@ -1,5 +1,5 @@
 <template>
-  <LineChart :data="data" :options="options" />
+  <LineChart :data="data" :options="options"  :key="prefData.datasets.length"/>
 </template>
 
 <script lang="ts">
@@ -27,29 +27,29 @@ ChartJS.register(
 
 export default {
 props:{
-  prefData:[],
-  prefLabel:[]
+  prefData:[]
 },
 
   name: 'ChartsBlock',
   components: {
     LineChart
   },
-  data() {
-    return {
-      data: {
-  labels: this.preflabel,
-  datasets: [
-    this.prefData
-  ]
+data() {
+  return {
+    data:
+      this.prefData
+    ,
+    options: {
+      responsive: true
+    }
+
+  }
+    
 },
 
- options: {
-  responsive: true
+mounted() {
+
 }
 
-    }
-    
-  }
 }
 </script>
