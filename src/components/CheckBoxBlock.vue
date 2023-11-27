@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="SubTitleArea">
+    <div class="SubTitleArea">
       <h2>都道府県</h2>
     </div>
     <div id="CheckboxArea">
@@ -50,7 +50,7 @@ export default {
 <style>
 
 /* SubTitleAreaに当てるCSS */
-h2{
+.SubTitleArea h2{
   padding: 0.5rem 1rem;
   background: #f4f4f4;
   border-left: 4px dashed #27374D;
@@ -58,9 +58,9 @@ h2{
   color: #27374D;
 }
 
-#SubTitleArea{
+.SubTitleArea{
   text-align: left;
-  padding: 10px 40px;
+  padding: 0px 40px;
   margin: 0;
 }
 
@@ -72,10 +72,11 @@ h2{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    /* border: solid 3px #526D82; */
     border-radius: 20px;
-    margin: 10px 36px;
+    margin: 10px 36px 30px 36px;
     padding: 20px 0;
+    height: 200px;
+    overflow: scroll;
   }
 
   #CheckBoxAndLabelArea{
@@ -95,14 +96,14 @@ h2{
     padding: 10px;
 }
 
-  label{
+  #CheckBoxAndLabelArea label{
     font-size: 1.2rem;
     font-weight: bold;
     color: #27374D;
     width:fit-content;
   }
 
-  input{
+  #CheckBoxAndLabelArea input{
     transform:scale(1.2);
     width: fit-content;
   }
@@ -111,8 +112,56 @@ h2{
     accent-color: #526D82;
   }
 
-  @media screen and (min-width: 481px){
-    
-  }
+
+ /* スマホ用CSS */
+  @media screen and (max-width: 414px){
+
+    #CheckBoxAndLabelArea{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: calc(100% / 4);
+      padding: 10px;
+      text-align: left;
+    }
+
+    .SubTitleArea{
+      text-align: left;
+      padding: 0 22px;
+      margin: 0;
+    }
+
+    .SubTitleArea h2{
+      font-size: 1rem;
+      padding: 0.2rem 1rem;
+    }
+
+    #CheckboxArea{
+      height: 136px;
+      overflow: scroll;
+      margin: 10px 20px 24px 20px;
+    }
+
+    #CheckboxArea:after{
+    width: calc(100% / 4);
+    height: 0;
+    padding: 10px;
+}
+
+    #CheckBoxAndLabelArea label{
+      font-size: 0.9rem;
+    }
+
+    #CheckBoxAndLabelArea{
+      width: calc(100% / 4);
+    }
+
+    /* #CheckboxArea:after{
+    content: "";
+    display: block;
+    width: calc(100% / 4);
+    height: 0;
+    padding: 10px; */
+}
 
 </style>

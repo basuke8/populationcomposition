@@ -58,6 +58,7 @@ export default {
           const prefData = {
             label: prefname,
             backgroundColor: randumDigit,
+            borderColor: randumDigit,
             data:response.data.result.data[0].data.map(v => v.value)
           }
 
@@ -98,6 +99,16 @@ export default {
   color: white;
   background-color: #27374D;
   padding: 20px;
-  margin: 0 0 30px 0;
+  margin: 0 0 10px 0;
+}
+
+/* スマホ用CSS */
+@media screen and (max-width: 414px){
+  #Title{
+    margin: 0 0 10px;
+    padding: 16px;
+  }
+
+  
 }
 </style>
