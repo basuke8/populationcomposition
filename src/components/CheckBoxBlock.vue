@@ -132,7 +132,7 @@ export default {
     }
 
     .SubTitleArea h2{
-      font-size: 1rem;
+      font-size: 1.2rem;
       padding: 0.2rem 1rem;
     }
 
@@ -149,7 +149,7 @@ export default {
 }
 
     #CheckBoxAndLabelArea label{
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     #CheckBoxAndLabelArea{

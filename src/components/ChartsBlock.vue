@@ -94,11 +94,7 @@ mounted() {
 
     #wrap-chart{
       width: calc(100vw - 20px);
-      height: 600px;
-    }
-
-    #ChartsContainer{
-
+      height: 500px;
     }
     
   }  
